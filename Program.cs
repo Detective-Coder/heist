@@ -9,7 +9,7 @@ namespace heist
         static void Main(string[] args)
         {
             // // phase one
-            // Console.WriteLine("Plan Your Heist!");          
+            Console.WriteLine("Plan Your Heist!");          
       
             // Console.WriteLine("What is the team member's name?");
             // string CriminalName = Console.ReadLine();
@@ -30,19 +30,16 @@ namespace heist
             while(true)
             {
               Console.WriteLine("What is the team member's name?");
-              string CriminalName;
-              CriminalName = Console.ReadLine();
+              string CriminalName = Console.ReadLine();
               if(CriminalName == "")
               {
                 break;
               }
               Console.WriteLine("What is the team member's skill level?");
-              int SkillLevel;
-              SkillLevel = Convert.ToInt32(Console.ReadLine());
+              int SkillLevel = Convert.ToInt32(Console.ReadLine());
 
               Console.WriteLine("What is the team member's courage?");
-              double CourageFactor;
-              CourageFactor = Convert.ToDouble(Console.ReadLine());
+              double CourageFactor = Convert.ToDouble(Console.ReadLine());
 
               Console.WriteLine();
               Console.WriteLine($"Name: {CriminalName}, Skill Level: {SkillLevel}, Courage: {CourageFactor}");
