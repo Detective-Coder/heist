@@ -13,9 +13,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\aaron\\workspace\\csharp\\heist\\heist.csproj",
-      "projectName": "heist",
-      "projectPath": "C:\\Users\\aaron\\workspace\\csharp\\heist\\heist.csproj",
+      "projectUniqueName": "C:\\Users\\aaron\\workspace\\csharp\\heist\\heist-2.csproj",
+      "projectName": "heist-2",
+      "projectPath": "C:\\Users\\aaron\\workspace\\csharp\\heist\\heist-2.csproj",
       "packagesPath": "C:\\Users\\aaron\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\aaron\\workspace\\csharp\\heist\\obj\\",
       "projectStyle": "PackageReference",

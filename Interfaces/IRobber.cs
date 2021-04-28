@@ -1,15 +1,10 @@
-namespace heist
+namespace heist_2
 {
-  //  Start by creating an interface called IRobber
-  public interface IRobber
+  public interface IRobber // Step 2. Create a Robber interface with the following properties
   {
-    // A string property for Name
-    string Name {get;}
-    // An integer property for SkillLevel
-    int SkillLevel {get;}
-    // An integer property for PercentageCut
-    int PercentageCut {get;}
-    // A method called PerformSkill that takes in a Bank parameter and doesn't return anything.
-    void PerformSkill(Bank bank);
+    string Name { get; }
+    int SkillLevel { get; }
+    int PercentageCut { get; }
+    void PerformSkill(Bank foo);
   }
 }
