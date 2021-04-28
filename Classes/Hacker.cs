@@ -13,7 +13,7 @@ namespace heist
     public void PerformSkill(Bank bank)
     {
       // Take the Bank parameter and decrement its appropriate security score by the SkillLevel
-      Console.WriteLine($"Hacker {Name} is hacking the bank. Subtract {SkillLevel} points from SkillLevel");
+      Console.WriteLine($"Hacker {Name} is hacking the bank. Subtract {SkillLevel} points from the bank");
       bank.AlarmScore = bank.AlarmScore - SkillLevel;
 
       // If the appropriate security score has be reduced to 0 or below, print a message to the console

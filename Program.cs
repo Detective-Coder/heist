@@ -136,6 +136,168 @@ namespace heist
             // At the end of the program, display a report showing the number of successful runs and the number of failed runs.
             Console.WriteLine();
             Console.WriteLine($"Thanks, the heist succeeded {heistSuccess.Sum()} times and failed {heistFailure.Sum()} times");
+
+            // In the Main method, create a List<IRobber> and store it in a variable named rolodex
+            // pre-populate the list with 5 or 6 robbers (give it a mix of Hackers, Lock Specialists, and Muscle)
+            List<IRobber> rolodex = new List<IRobber>
+            {
+              new Hacker
+              {
+                Name = "Todd",
+                SkillLevel = 50,
+                PercentageCut = 5
+              },
+              new Hacker
+              {
+                Name = "Patti",
+                SkillLevel = 42,
+                PercentageCut = 5
+              },
+              new Muscle
+              {
+                Name = "Gabe",
+                SkillLevel = 10,
+                PercentageCut = 5
+              },
+              new Muscle
+              {
+                Name = "Aaron",
+                SkillLevel = 77,
+                PercentageCut = 5
+              },
+              new LockSpecialist
+              {
+                Name = "Jordan",
+                SkillLevel = 20,
+                PercentageCut = 5
+              },
+              new LockSpecialist
+              {
+                Name = "Tommy",
+                SkillLevel = 15,
+                PercentageCut = 5
+              }
+            };
+
+            // When the program starts, print out the number of current operatives in the roladex
+            Console.WriteLine($"There are {rolodex.Count} current operatives in the roladex.");
+            
+            // prompt the user to enter the name of a new possible crew member
+            // allow the user to enter as many crew members as they like to the rolodex until they enter a blank name
+            string userName = null;
+            while (userName != "")
+            {
+              Console.WriteLine("Enter the name of a new possible crew member. Leave blank to move on.");
+              userName = Console.ReadLine();
+              // Terminate the loop if the user enters nothing
+              if (userName == "")
+              {
+                break;
+              }
+
+              // Print out a list of possible specialties and have the user select which specialty this operative has.
+              // a dictionary with all 3 specialities
+              Dictionary<string, string> skillsSelect = new Dictionary<string, string>()
+              {
+                {"A", "Hacker (Disables alarms"},
+                {"B", "Muscle (Disables guards)"},
+                {"C", "Lock Specialist (cracks vault)"}
+              };
+              Console.WriteLine("\nWhat specialty are the known for?" +
+                          $"\na: {skillsSelect["A"]}" +
+                          $"\nb: {skillsSelect["B"]}" +
+                          $"\nc: {skillsSelect["C"]}");
+              // Have the user type the letter of choice in list to save that specialty
+              string cki = Console.ReadKey(true).Key.ToString();
+              string userSkill = null;
+              // Use error handling in case the user doesn't pick from the list.
+              try
+              {
+                // save just the name of the class of robber from the selected pick
+                userSkill = skillsSelect[cki].Substring(0, skillsSelect[cki].IndexOf("(")).Replace(" ", string.Empty);
+              }
+              catch (KeyNotFoundException)
+              {
+                Console.WriteLine("\nYou didn't pick one of the 3 options. Try again.");
+                // give the user one more chance to pick from the list
+                try
+                {
+                  Console.WriteLine("\nWhat specialty are they known for?" +
+                            $"\n{skillsSelect["A"]}" +
+                            $"\n{skillsSelect["B"]}" +
+                            $"\n{skillsSelect["C"]}");
+                  cki = Console.ReadKey(true).Key.ToString();
+                  // save just the name of the class of robber from the selected pick
+                  userSkill = skillsSelect[cki].Substring(0, skillsSelect[cki].IndexOf("(")).Replace(" ", string.Empty);
+                }
+                catch (KeyNotFoundException)
+                {
+                  Console.WriteLine("\nYou are trying to cause problems. Goodbye.");
+                  Environment.Exit(0);
+                }
+              }
+
+              // prompt the user to enter the new member's skill level
+              int userLevel = -1;
+              // keep asking for skill level if integer doesn't fall in required range
+              while (userLevel < 1 || userLevel > 100)
+              {
+                Console.WriteLine($"\nWhat is {userName}'s skill level? (Enter an integer between 1-100");
+                // Make sure the skill level is an integer
+                try
+                {
+                  userLevel = Convert.ToInt32(Console.ReadLine());
+                }
+                catch (FormatException)
+                {
+                  Console.WriteLine("Please enter only an integer value for skill level.");
+                  // give second chance to enter a number
+                  try
+                  {
+                    userLevel = Convert.ToInt32(Console.ReadLine());
+                  }
+                  catch (FormatException)
+                  {
+                    Console.WriteLine("Goodbye");
+                    Environment.Exit(0);
+                  }
+                }
+              }
+
+              // Once all data has been gathered, add the new member to the rolodex.
+              // Use if statement to add different classes.
+              if (userSkill == "Hacker")
+              {
+                Hacker newMember = new Hacker
+                {
+                  Name = userName,
+                  SkillLevel = userLevel
+                };
+                // Add newly created member to rolodex
+                rolodex.Add(newMember);
+              }
+              else if (userSkill == "Muscle")
+              {
+                Muscle newMember = new Muscle
+                {
+                  Name = userName,
+                  SkillLevel = userLevel
+                };
+                // add newly created member to rolodex
+                rolodex.Add(newMember);
+              }
+              else
+              {
+                LockSpecialist newMember = new LockSpecialist
+                {
+                  Name = userName,
+                  SkillLevel = userLevel
+                };
+                // Add newly created member to rolodex
+                rolodex.Add(newMember);
+              }
+            }
+          
         } 
     }
 }
